@@ -46,7 +46,7 @@ PROJECT is the current project."
       '(("blog"
           :base-directory "~/szc_life/github/songjangchal.github.io/org"
           :base-extension "org"
-          :publishing-directory "~/szc_life/github/songjangchal.github.io/"
+          :publishing-directory "~/szc_life/github/songjangchal.github.io/html"
           :publishing-function org-html-publish-to-html
           :style-include-default nil       
           :headline-levels 3
