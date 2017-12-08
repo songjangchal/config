@@ -229,33 +229,7 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 
-
-;; 
-;; enable a more powerful jump back function from ace jump mode
-;;
-;(autoload
-;  'ace-jump-mode-pop-mark
-;  "ace-jump-mode"
-;  "Ace jump back:-)"
-;  t)
-;(eval-after-load "ace-jump-mode"
-;  '(ace-jump-mode-enable-mark-sync))
-;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
-
-;;If you use viper mode :
-;;(define-key viper-vi-global-user-map (kbd "SPC") 'ace-jump-mode)
-;;If you use evil
-;;(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
-
-;(add-to-list 'load-path "~/site-lisp/avy-0.4.0")
-;(mapc #'byte-compile-file '("avy.el"))
-;(require 'avy)
-;(if (fboundp 'checkdoc-file)
-;    (checkdoc-file "avy.el")
-;  (require 'checkdoc)
-;  (with-current-buffer (find-file "avy.el")
-;    (checkdoc-current-buffer t)))
-
+;; avy
 ;;(global-set-key (kbd "C-,") 'avy-goto-char)
 
 (define-key global-map (kbd "C-,") 'avy-goto-char)
@@ -263,7 +237,6 @@
 
 
 ;;(require 'taskjuggler-mode)
-
 (global-auto-revert-mode 1)
 
 (defun my-js-mode-hook ()
@@ -278,7 +251,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (htmlize tide plantuml-mode org))))
+ '(package-selected-packages (quote (avy htmlize tide plantuml-mode org))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

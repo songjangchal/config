@@ -65,4 +65,19 @@ PROJECT is the current project."
           :creator-info nil
           )))
 
+
+(setq org-image-actual-width nil)
+
+;;Then in org-mode, you can use this for inline previews of JPGs and PNGs. Doesn't appear to work for SVGs (no idea why)
+
+;; #+ATTR_ORG: :width 100
+;; [[~/images/example.jpg]]
+
+;; and if you want to size this for both inline previews and html output:
+
+;; #+ATTR_HTML: width="100px"
+;; #+ATTR_ORG: :width 100
+;; [[~/images/example.jpg]]
+
+
 (provide 'init-org)
