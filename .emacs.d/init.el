@@ -116,7 +116,6 @@
 (setq visible-bell t)
 (setq default-major-mode 'text-mode)
 (put 'narrow-to-page 'disabled nil)
-(server-start) 
 (appt-activate)
 
 (require 'dired-x)
@@ -142,6 +141,12 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 
+
+;;=============================
+;;  color-theme
+;;  sublime theme
+(add-hook 'after-init-hook (lambda () (load-theme 'spolsky t)))
+
 ;; add package management
 (require 'package)
 (add-to-list 'package-archives'
@@ -152,23 +157,18 @@
   ("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
+;; (unless (require 'el-get nil 'noerror)
+;;  (with-current-buffer
+;;      (url-retrieve-synchronously
+;;       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+;;    (goto-char (point-max))
+;;    (eval-print-last-sexp)))
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(el-get 'sync)
+;; (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;; (el-get 'sync)
 
-
-;;=============================
-;;  color-theme
-;;  sublime theme
-(load-theme 'spolsky t)
 
 ;;=============================
 ;; programming languages
@@ -216,22 +216,9 @@
 
 (setq auto-mode-alist (append '(("/*.\.page$" . markdown-mode)) auto-mode-alist))
 
-;;
-;; ace jump mode major function
-;; 
-(add-to-list 'load-path "/full/path/where/ace-jump-mode.el/in/")
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-;; you can select the key you prefer to
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-
 
 ;; avy
 ;;(global-set-key (kbd "C-,") 'avy-goto-char)
-
 (define-key global-map (kbd "C-,") 'avy-goto-char)
 (global-set-key (kbd "C-.") 'avy-goto-word-1)
 
@@ -244,14 +231,15 @@
   (setq js-indent-level 2))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
-(setq ibus-agent-file-name "~/site-lisp/ibus-el-0.3.2/ibus-el-agent")
+;(setq ibus-agent-file-name "~/site-lisp/ibus-el-0.3.2/ibus-el-agent")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (avy htmlize tide plantuml-mode org))))
+ '(package-selected-packages (quote (sublime-themes avy htmlize tide plantuml-mode org yasnippet)))
+ '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
