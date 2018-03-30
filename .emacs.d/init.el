@@ -137,8 +137,9 @@
 
 ;;=============================
 ;; add packege path
-
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; other package that not in elpa
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 
 
@@ -148,13 +149,16 @@
 (add-hook 'after-init-hook (lambda () (load-theme 'spolsky t)))
 
 ;; add package management
+
+;; see https://mirrors.tuna.tsinghua.edu.cn/help/elpa/
+
 (require 'package)
 (add-to-list 'package-archives'
-  ("elpa" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives' 
-  ("marmalade" . "http://marmalade-repo.org/packages/") t)
+             ("elpa" . "http://tromey.com/elpa/") t)
 (add-to-list 'package-archives'
-  ("melpa" . "http://melpa.milkbox.net/packages/") t)
+             ("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives'
+             ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t)
 (package-initialize)
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -171,6 +175,9 @@
 
 
 ;;=============================
+(require 'taskjuggler-mode)
+
+;;=============================
 ;; programming languages
 (require 'init-c-c++)
 (require 'init-scheme)
@@ -179,6 +186,7 @@
 ;; org-mode
 (require 'init-org)
 
+(require 'init-exwm)
 
 (require 'server)
 (unless (server-running-p)
@@ -217,6 +225,8 @@
 (setq auto-mode-alist (append '(("/*.\.page$" . markdown-mode)) auto-mode-alist))
 
 
+(setq auto-mode-alist (append '(("/*.\.fbs$" . protobuf-mode)) auto-mode-alist))
+
 ;; avy
 ;;(global-set-key (kbd "C-,") 'avy-goto-char)
 (define-key global-map (kbd "C-,") 'avy-goto-char)
@@ -226,19 +236,30 @@
 ;;(require 'taskjuggler-mode)
 (global-auto-revert-mode 1)
 
+(setq auto-mode-alist (cons '("\\.\\(g\\|g4\\|g3\\)$" . antlr-mode) auto-mode-alist))
+
 (defun my-js-mode-hook ()
   "My personal Javascript mode hook."
   (setq js-indent-level 2))
 
 (add-hook 'js-mode-hook 'my-js-mode-hook)
-;(setq ibus-agent-file-name "~/site-lisp/ibus-el-0.3.2/ibus-el-agent")
+;;(setq ibus-agent-file-name "~/site-lisp/ibus-el-0.3.2/ibus-el-agent")
+
+
+(setq exec-path-from-shell-variables '("PATH" "MANPATH" "GOROOT" "GOPATH" "EDITOR" "PYTHONPATH"))
+;; 设成nil 则不从 .zshrc 读 只从 .zshenv读（可以加快速度，但是需要你将环境变量相关的都放到 .zshenv 中，而非 .zshrc 中）
+;;(setq exec-path-from-shell-check-startup-files nil) ;
+;;(setq exec-path-from-shell-arguments '("-l" )) ;remove -i read form .zshenv
+(exec-path-from-shell-initialize)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (sublime-themes avy htmlize tide plantuml-mode org yasnippet)))
+ '(package-selected-packages
+   (quote
+    (exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-brain sicp org-plus-contrib php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -246,3 +267,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
