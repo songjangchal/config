@@ -12,6 +12,10 @@
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
+(setq word-wrap t)
+
+;; (setq org-startup-indented t)
+
 (setq-default indent-tabs-mode nil)
 (setq default-tab-width 4)
 (setq tab-stop-list ())
@@ -33,6 +37,7 @@
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+(display-time-mode 1)
 
 ;;backup
 ;; 所有的备份文件转移到~/backups目录下
@@ -186,16 +191,22 @@
 ;; org-mode
 (require 'init-org)
 
-(require 'init-exwm)
+;; (require 'init-exwm)
 
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
 
+(require 'pyim)
+(require 'pyim-basedict) ; 拼音词库设置，五笔用户 *不需要* 此行设置
+(pyim-basedict-enable)   ; 拼音词库，五笔用户 *不需要* 此行设置
+(setq default-input-method "pyim")
+
+
 ;; xml settings
 (setq auto-mode-alist
-      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
+      (cons '("\\.\\(xml\\|xsl\\|xsd\\|rng\\|xhtml\\)\\'" . nxml-mode)
             auto-mode-alist))
 (eval-after-load "nxml-mode" '(define-key nxml-mode-map "\M-h" 'backward-kill-word))
 
@@ -233,6 +244,7 @@
 (global-set-key (kbd "C-.") 'avy-goto-word-1)
 
 
+
 ;;(require 'taskjuggler-mode)
 (global-auto-revert-mode 1)
 
@@ -252,14 +264,35 @@
 ;;(setq exec-path-from-shell-arguments '("-l" )) ;remove -i read form .zshenv
 (exec-path-from-shell-initialize)
 
+(global-set-key (kbd "M-o") 'ace-window)
+(setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n))
+(setq aw-leading-char-style 'path)
+
+
+
+(if (boundp 'mail-user-agent)
+    (setq mail-user-agent 'wl-user-agent))
+(if (fboundp 'define-mail-user-agent)
+    (define-mail-user-agent
+      'wl-user-agent
+      'wl-user-agent-compose
+      'wl-draft-send
+      'wl-draft-kill
+      'mail-send-hook))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-brain sicp org-plus-contrib php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
+    (julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-brain sicp org-plus-contrib php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

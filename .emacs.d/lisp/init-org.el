@@ -82,6 +82,8 @@ PROJECT is the current project."
 
 (require 'ox-reveal)
 (require 'ox-md)
+(require 'ox-pandoc-md)
+(require 'ox-confluence)
 (require 'org-capture)
 
 ;; org-brain
@@ -101,6 +103,8 @@ PROJECT is the current project."
   (aa2u (point-min) (point-max)))
 
 (add-hook 'org-brain-after-visualize-hook #'aa2u-buffer)
+
+(setq org-startup-truncated nil)
 
 (provide 'init-org)
 
