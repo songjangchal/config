@@ -8,12 +8,19 @@
 
 
 stow -t $HOME bash
-stow -t $HOME emacs
+
 #stow -t $HOME mutt
 stow -t $HOME vim
-stow -t $HOME xmonad
+
+mkdir -p $HOME/.xmonad
+stow -t $HOME --no-folding  xmonad
+
+mkdir -p $HOME/.emacs.d
+stow -t $HOME --no-folding emacs
+
+
 stow -t $HOME xorg
-stow -t / xorg
+stow -t / zhengma
 
 systemctl enable systemd-timesyncd.service
 

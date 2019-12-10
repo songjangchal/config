@@ -27,8 +27,8 @@ hhkb_id=`xinput list --id-only  "Topre Corporation HHKB Professional"`
 
 
 #setxkbmap -layout us -variant dvp
-xkbcomp $HOME/thinkpad.xkb $DISPLAY -i ${thinkpad_id}
-xkbcomp $HOME/hhkb.xkb $DISPLAY -i ${hhkb_id}
+xkbcomp $HOME/.thinkpad.xkb $DISPLAY -i ${thinkpad_id}
+xkbcomp $HOME/.hhkb.xkb $DISPLAY -i ${hhkb_id}
 
 
 export XMODIFIERS="@im=ibus"
@@ -53,6 +53,7 @@ xrandr --output VGA-1 --auto --left-of LVDS-1
 
 #nohup $HOME/software/davmail/davmail.sh &
 
+$HOME/.fehbg &
 #
 #exec startlxde
 # exec gnome-session  

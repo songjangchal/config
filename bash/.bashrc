@@ -167,8 +167,16 @@ alias setd2="xrandr --output VGA1 --auto --left-of LVDS1"
 alias offd2="xrandr --output VGA1 --off"
 
 
+#jlink
 #alias fhex="JLinkExe -Device stm32f207vg -If SWD -Speed 4000"
-alias fhex="JLinkExe -Device stm32f407zg -If SWD -Speed 4000"
+alias fhex4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f4_burn.jlink"
+alias fhex1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f1_burn.jlink"
+
+alias j4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000"
+alias j1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000"
+
+#jlinkrttlog
+alias rttlog="JLinkRTTLogger -Device stm32f103c8 -If SWD -Speed 4000 -RTTChannel 0 /tmp/rtt.log"
 
 function win7() {
     ssh -t songzc@192.168.52.222 "nohub VBoxManage startvm 'win7' --type headless&"
