@@ -1,0 +1,38 @@
+xkb_keymap {
+	xkb_keycodes  {
+        include "evdev"	
+        //switch l-control/r-control and l-win/r-win        
+        <LCTL> = 133;
+        <RCTL> = 107;
+        <LALT> = 37;
+        <RALT> = 105;
+        <LWIN> = 66;
+        <RWIN> = 36;
+
+        <RTRN> = 51;
+        <BKSL> = 64; 
+        //switch
+    };
+
+	xkb_types     {
+        include "complete"
+        type "ASCII_CONTROL_THREE"{
+            modifiers = Shift+Control;
+            map[None] = Level1;
+            map[Shift] = Level2;
+            map[Control] = Level3;
+          	level_name[Level1] = "Base";
+            level_name[Level2] = "Shift";
+	        level_name[Level3] = "control";
+        };   
+    };
+	xkb_compat    { include "complete"	};
+	xkb_symbols   { 
+        include "pc+us(dvp)+level3(ralt_alt)"
+        key <AC07> {
+        type[Group1]="ASCII_CONTROL_THREE",
+        symbols[Group1] = [h, H, BackSpace]
+        };
+    };
+	xkb_geometry  { include "pc(pc104)"	};
+};

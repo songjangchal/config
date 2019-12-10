@@ -1,0 +1,37 @@
+PATH=/bin:/sbin:/usr/bin:/usr/sbin
+SHELL=/bin/bash
+MAILDIR=$HOME/Mail/
+DEFAULT=$MAILDIR/inbox/
+LOGFILE=$MAILDIR/.procmaillog
+
+:0
+* ^From:.*conference@avonaco.com
+conf_test/
+
+:0 
+* ^From.*@avonaco.com
+{
+ :0
+ * (^To|^Cc).*songzc@avonaco.com
+ work/
+ 
+ :0
+ avonaco/
+}
+
+:0
+* (^To|^Cc).*songzc@avonaco.com
+work/
+
+
+:0
+* ^From.*@yahoo.com.cn
+yahoo1/
+
+:0
+* .* inbox
+
+:0:
+* ^From.*badguy
+/dev/null
+

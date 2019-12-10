@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: picture
+# key: <p
+# --
+#+caption: ${1:caption of the image}
+#+attr_odt: : scale ${2:1.0}
+[[file:./pic/${3:image_path}]]$0

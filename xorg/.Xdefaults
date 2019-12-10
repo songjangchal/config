@@ -1,0 +1,69 @@
+URxvt.title:urxvt
+URxvt.preeditType:Root
+!!颜色设置
+URxvt.depth:32
+!!中括号内数表示透明度
+URxvt.background:[90]#000000
+!!URxvt.foreground:#ffffff
+URxvt.foreground:#aaaaaa
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+!!URL操作
+URxvt.urlLauncher:firefox
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+!!滚动条设置
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:10000
+!!边框
+URxvt.borderLess:False
+!!字体设置
+Xft.dpi:96
+URxvt.font:xft:Bitstream Vera Sans Mono-12
+URxvt.boldFont:xft:Bitstream Vera Sans Mono-12:Bold
+URxvt.font:xft:Bitstream Vera Sans Mono-12,xft:文泉驿等宽正黑:size=12:style=Regular:antialias=true
+!!URxvt.font:xft:Droid Sans Mono:size=12:style=Regular:antialias=true,xft:文泉驿等宽正黑:size=12:style=Regular:antialias=true
+!!URxvt.boldfont:xft:Droid Sans Mono:size=12:style=BOld:antialias=true,xft:文泉驿等宽正黑:size=12:style=Bold:antialias=true
+!! URxvt.font:xft:文泉驿等宽正黑:size=12:style=Regular:antialias=true,xft:文泉驿等宽正黑:size=12:style=Regular:antialias=true
+!URxvt.font: xft:DejaVu Sans Mono-12
+!!URxvt.font:xft:Monospace:Regular:size=12:antialias=true
+!URxvt.font:xft:AR PL KaitiM GB:Regular:pixelsize=17:antialias=true
+!!URxvt.boldfont:xft:文泉驿等宽正黑:size=12:style=Bold:antialias=true,xft:文泉驿等宽正黑:size=12:style=Bold:antialias=true
+
+
+!! URxvt.keysym.C-Up: command:]50;xft:AR PL KaitiM GB:Regular:pixelsize=20:antialias=true
+!! URxvt.keysym.C-Down:command:]50;xft:AR PL KaitiM GB:Regular:pixelsize=17:antialias=true 
+!! 
+!! 
+!! URxvt.perl-lib: /home/jixiuf/.config/URxvt/
+!! URxvt.perl-ext-common:clipboard,vim_scrollback
+!! !URxvt.matcher.button:  1
+!! !Control+Shift+c 剪切 
+!! !CONTROL+Shift+v paste
+!! URxvt.keysym.Control-C: perl:clipboard:copy
+!! URxvt.keysym.Control-V: perl:clipboard:paste
+
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  firefox
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search

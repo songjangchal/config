@@ -1,0 +1,21 @@
+xkb_keymap {
+	xkb_keycodes  {
+        include "evdev"	
+        //switch l-control/r-control and l-win/r-win        
+        <LCTL> = 64;
+        <RCTL> = 108;
+        <LALT> = 133;
+        <RALT> = 134;
+        <LWIN> = 66;
+        <RWIN> = 36;
+
+        <RTRN> = 51;
+        <BKSL> = 37; 
+        //switch
+    };
+
+	xkb_types     { include "complete"	};
+	xkb_compat    { include "complete"	};
+	xkb_symbols   { include "pc+us(dvp)+level3(ralt_alt)"	};
+	xkb_geometry  { include "pc(pc104)"	};
+};

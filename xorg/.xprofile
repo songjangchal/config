@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+#setxkbmap -layout us -variant dvp
+xkbcomp $HOME/szc_life/configure/hhkb.xkb $DISPLAY
+
+# exchange button left and button right
+xinput set-button-map 9 3 2 1 4 5 6 7
+
+export XMODIFIERS="@im=ibus"
+#  export XMODIFIERS="@im=fcitx"
+#export GTK_IM_MODULE=xim
+#export QT_IM_MODULE=xim
+
+xsetroot -cursor_name left_ptr
+xrandr --output HDMI1
+xrandr --output VGA1 --mode 1600x900 --left-of  HDMI1
+#xrandr --output VGA1 --left-of LVDS1
+#syndaemon -t -k -i 2 -d & 
+#trayer --edge top --align right --widthtype request --expand true --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x1A1918 --expand true --heighttype pixel --height 14  --padding 1& #  --distance 25 &
+
+#stalonetray -i 16 --max-width 48 --icon-gravity E --geometry 48x16-0+0 -bg '#2e3436' --sticky --skip-taskbar &
+#stalonetray -i 21  --icon-gravity E --geometry 10x1-0+0 -bg '#1B1D1E' --sticky   --dockapp-mode wmaker -d all --window-strut none  --kludges=force_icons_size&
+
+#taffybar&
+#/home/songzc/.cache/taffybar/taffybar-linux-x86_64 &
+
+
+ibus-daemon --xim  -d
+nm-applet&
+
+nohup $HOME/software/davmail-4.8.0-2479/davmail.sh &
+
+#
+#exec startlxde
+# exec gnome-session  
+exec xmonad
+

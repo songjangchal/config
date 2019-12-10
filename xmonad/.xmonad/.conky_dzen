@@ -1,0 +1,15 @@
+conky.config = {
+	background = true,
+	out_to_console = true,
+	out_to_x = false,
+-- Update interval in seconds
+	update_interval = 1,
+
+};
+
+conky.text = [[
+  ^i($HOME/.xmonad/pic/cpu.xpm)^fg(\#FFFFFF)${cpu}%\
+  ^i($HOME/.xmonad/pic/memory.xpm)^fg(\#FFFFFF)${memperc}%\
+  ^i($HOME/.xmonad/pic/battery-2.xpm)^fg(\#ebac54)${battery_percent}%\
+  ^fg(\#FFFFFF)${time %m月%d日}^fg(\#ebac54) ${time %R}]];
+

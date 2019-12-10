@@ -1,0 +1,17 @@
+[retriever]
+type = SimplePOP3Retriever
+server = pop.mail.yahoo.com.cn
+username = szc_buda@yahoo.com.cn
+password = 999622621
+
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+unixfrom = true
+
+[options]
+verbose = 1
+read_all = false
+delete = true
+#message_log = ~/.getmail/log

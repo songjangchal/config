@@ -1,0 +1,19 @@
+#!/bin/sh
+
+#mutt
+
+#mkdir -p $HOME/.getmail
+#ln -s $HOME/szc_life/configure/rc.avonaco $HOME/.getmail/rc.avonaco
+#ln -s $HOME/szc_life/configure/rc.yahoo $HOME/.getmail/rc.yahoo
+
+
+stow -t $HOME bash
+stow -t $HOME emacs
+#stow -t $HOME mutt
+stow -t $HOME vim
+stow -t $HOME xmonad
+stow -t $HOME xorg
+stow -t / xorg
+
+systemctl enable systemd-timesyncd.service
+

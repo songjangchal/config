@@ -1,0 +1,5 @@
+text/html; w3m -I %{charset} -T text/html ; nametemplate=%s.html; copiousoutput;
+application/msword; libreoffice %s
+application/vnd.ms-excel; libreoffice %s
+application/docx; libreoffice %s
+application/pdf; evince %s

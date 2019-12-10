@@ -1,0 +1,56 @@
+
+! xrdb -load ~/.Xresources
+! Xft settings --------------------------------------------------------------- 
+
+Xft.dpi: 96 
+Xft.antialias: true 
+Xft.rgba: rgb 
+Xft.hinting: true 
+Xft.hintstyle: hintslight 
+
+! xterm ---------------------------------------------------------------------- 
+xterm*termName: xterm-256color
+xterm*scrollBar: true 
+xterm*rightScrollBar: true 
+
+!XTerm*locale: zh_CN.UTF-8
+XTerm*locale: true 
+xterm.utf8: true
+XTerm*utf8Title: true 
+
+! English font 
+!xterm*faceName: DejaVu Sans Mono:antialias=True:pixelsize=14 
+!xterm*faceName: Monaco:antialias=True:pixelsize=14
+!XTerm*faceName: Lucida Console 
+xterm*faceName: Mono:antialias=True:pixelsize=14
+! Chinese font 
+xterm*faceNameDoublesize: WenQuanYi Micro Hei:pixelsize=14
+
+
+XTerm*fontMenu*fontdefault*Label: Default 
+XTerm*faceSize:  10
+XTerm*faceSize1: 10
+XTerm*faceSize2: 10
+XTerm*faceSize3: 10
+XTerm*faceSize4: 10
+XTerm*faceSize5: 10
+XTerm*faceSize6: 10
+XTerm.cjkWidth: false
+!XTerm*background: rgb:21/08/19
+XTerm*background: black
+XTerm*foreground: white
+xterm*xftAntialias: true
+
+XTerm*jumpScroll:  true
+
+!Scrolling, Shift+PageUp/Shift+PageDown, or the scrollbar
+XTerm*SaveLines: 30000
+
+xterm*VT100.Translations: #override \
+    <Btn1Up>: select-end(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\ 
+    Ctrl <KeyPress> V: insert-selection(CLIPBOARD,PRIMARY,CUT_BUFFER0) \n\
+    Ctrl <KeyPress> P: print() \n
+
+!print color and bold/underline attributes
+!xterm*printAttributes: 2
+!xterm*printerCommand: cat > ~/xtermdump
