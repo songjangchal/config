@@ -112,7 +112,7 @@ PROJECT is the current project."
 (setq org-startup-truncated nil)
 
 
-(setq web-capture-dir "~/szc_life/")
+(setq web-capture-dir "~/szc_life/github/songjangchal.github.io/")
 (setq org-capture-templates `(
 	("p" "Protocol" entry (file+headline ,(concat web-capture-dir "notes.org") "Inbox")
          "* %^{Title}\nSource: [[%:link][%:description]], %u\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?")

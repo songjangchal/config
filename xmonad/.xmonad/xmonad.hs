@@ -94,7 +94,7 @@ startupApp= do
 --  spawn "pidgin"
   spawn "firefox"
   spawn "thunderbird"
-  spawn "env LANG='zh_CN.utf8' LC_CTYPE='zh_CN.utf8' emacs &"
+--  spawn "env LANG='zh_CN.utf8' LC_CTYPE='zh_CN.utf8' emacs &"  -- chinese-im invalid
   spawn myTerminal
   debugStackFull
 

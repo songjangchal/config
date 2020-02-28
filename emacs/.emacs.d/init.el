@@ -20,17 +20,6 @@
 (setq default-tab-width 4)
 (setq tab-stop-list ())
 
-(global-set-key [(control h)] 'delete-backward-char)
-;;(keyboard-translate ?\C-h ?\C-?)
-
-(global-set-key [(meta h)] 'backward-kill-word)
-(global-set-key (kbd "M-g g") 'goto-line)
-
-
-;;
-(global-set-key (kbd "M-+") 'text-scale-increase)
-(global-set-key (kbd "M--") 'text-scale-decrease)
-
 
 (setq scroll-step 1
       scroll-margin 3
@@ -302,7 +291,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (ggtags w3m w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
+    (google-translate org-web-tools ggtags w3m w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(yas-global-mode t))
@@ -313,5 +302,18 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 ;;  '(default ((t (:family "Noto Sans Mono" :foundry "DAMA" :slant normal :weight normal :height 110 :width normal)))))
+
+
+;; global key settings
+(global-set-key [(control h)] 'delete-backward-char)
+;;(keyboard-translate ?\C-h ?\C-?)
+
+(global-set-key [(meta h)] 'backward-kill-word)
+(global-set-key (kbd "M-g g") 'goto-line)
+
+
+;;
+(global-set-key (kbd "M-+") 'text-scale-increase)
+(global-set-key (kbd "M--") 'text-scale-decrease)
 
 

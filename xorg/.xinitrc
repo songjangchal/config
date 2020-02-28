@@ -38,6 +38,7 @@ export XMODIFIERS="@im=ibus"
 
 xsetroot -cursor_name left_ptr
 
+xrandr --output LVDS-1 --auto --primary 
 xrandr --output VGA-1 --auto --left-of LVDS-1
 #xrandr --output VGA1 --mode 1366x768
 #xrandr --output HDMI1 --mode 1600x900 --left-of  VGA1
