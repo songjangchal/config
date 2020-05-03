@@ -1,3 +1,6 @@
+{-# LANGUAGE OverloadedStrings #-}
+-- {-# LANGUAGE ExtendedDefaultRules #-}
+-- {-# OPTIONS_GHC -fno-warn-type-defaults #-}
 -- ~/.xmonad/xmonad.hs
 -- Imports
 import XMonad
@@ -43,6 +46,16 @@ import qualified Data.Map as M
 
 import System.Posix.Env as Env
 
+-- import Shelly
+
+import Turtle
+
+import Control.Monad.Trans (liftIO)
+import System.Log.Logger (logM, Priority(..))
+
+import System.Process
+
+
 -- Config 
 -- Define Terminal
 myTerminal      = "urxvt"
@@ -56,9 +69,9 @@ myWorkspaces = ["1:term","2:web","3:emacs","4:chat","5:media", "6:graph", "7:mis
 bar_h = 21
 dzen_option = "  -y '0' -e 'button3=unhide' -fg '#FFFFFF' -bg '#1B1D1E' -fn 'WenQuanYi Micro Hei-12' -h " ++ show bar_h
 
---dzen1_pos_x = 0  -- only thinkpad
+dzen1_pos_x = 0  -- only thinkpad
 --dzen1_pos_x = 1600
-dzen1_pos_x = 1920
+--dzen1_pos_x = 1920
 
 --screen_w = 1366 -- only thinkpad
 screen_w = 1366 + dzen1_pos_x
@@ -98,7 +111,30 @@ startupApp= do
   spawn myTerminal
   debugStackFull
 
+
+--getXrandr = do
+--  dir <- pwd
+--  ret <- shell "xrandr" empty
+--  liftIO $ logM "xmonad" WARNING $ " --------------   xrandr return: " ++ show ret    
+--  return ret
+
 main = do
+--    shelly $ do
+--      ret <- escaping False $ cmd "xrandr" "--listactivemonitors  | head  -1 | awk '{print $2}'"
+--    xSize <- getXrandr
+--    it <- lifteIO $ readProcessWithExitCode  "xrandr" ["--listactivemonitors"] ""
+--    it <- readProcess  "xrandr" ["--listactivemonitors"] ""
+
+    monitor_num <- getEnv "monitor_num"
+    screen1_width <- getEnv "screen1_width"
+
+--      let t = digitToInt monitor_num
+    
+    liftIO $ logM "xmonad" WARNING $ " --------------   xrandr return: " ++ show monitor_num ++ " " ++ show screen1_width
+
+
+    
+
     dzenLeftBar <- spawnPipe myXmonadBar
     dzenRightBar <- spawnPipe myStatusBar
     dzenTrayBar <- spawnPipe myTrayerBar 
@@ -213,7 +249,8 @@ gimpLayout  = avoidStruts $ withIM (0.11) (Role "gimp-toolbox") $
               reflectHoriz $
               withIM (0.15) (Role "gimp-dock") Full
 
-imLayout    = avoidStruts $ withIM (1%5) (Or (Title "Buddy List") (And (Resource "main") (ClassName "psi"))) Grid 
+-- imLayout    = avoidStruts $ withIM (1%5) (Or (Title "Buddy List") (And (Resource "main") (ClassName "psi"))) Grid
+imLayout    = avoidStruts $ withIM (0.2) (Or (Title "Buddy List") (And (Resource "main") (ClassName "psi"))) Grid 
 
 --
 -- Theme 

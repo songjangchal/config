@@ -57,7 +57,17 @@ xrandr --output VGA-1 --auto --left-of LVDS-1
 $HOME/.fehbg &
 #
 #exec startlxde
-# exec gnome-session  
+# exec gnome-session
+
+
+xrandr_info=`xrandr --listactivemonitors`
+
+export monitor_num=`echo $xrandr_info | head  -1 | awk '{print $2}'`
+export screen1_width=` echo $xrandr_info |head -2 | tail -1 | awk -F' ' '{print $3}'| awk -F'/' '{print $1}'`
+
+#echo $monitor_num > /tmp/m_size
+#echo $screen1_width >> /tmp/m_size
+
 exec xmonad
 #export exwm_x_enable="yes"
 

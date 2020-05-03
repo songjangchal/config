@@ -1,0 +1,7 @@
+
+function setkb-thinkpad(){
+    thinkpad_id=`xinput list --id-only  "AT Translated Set 2 keyboard"`
+
+    echo "thinkpad id: $thinkpad_id"
+    xkbcomp $HOME/szc_life/configure/thinkpad.xkb $DISPLAY  -i ${thinkpad_id}
+}

@@ -1,0 +1,72 @@
+# -*- mode: snippet -*-
+# name: metadata
+# key: <m
+
+# |              |              |                                           |            |                             |
+# |--------------+--------------+-------------------------------------------+------------+-----------------------------|
+# | 语言功能     | '            | smart quotes                              | toggle     | "":主引号, ''为副引号, '为' |
+# |              | *            | emphasized text                           | toggle     |                             |
+# |              | -            | conversion of special strings             | toggle     |                             |
+# |              | :            | fixed-width sections                      | toggle     |                             |
+# |--------------+--------------+-------------------------------------------+------------+-----------------------------|
+# |              | <            | time/date active/inactive stamps          | incluesion |                             |
+# |--------------+--------------+-------------------------------------------+------------+-----------------------------|
+# | 特殊字符处理 | \n           | whether to preserve line breaks           | toggle     |                             |
+# |              | ^            | TeX-like syntax for sub- and superscripts | toggle     |                             |
+# |--------------+--------------+-------------------------------------------+------------+-----------------------------|
+# | 字段包含     | author       |                                           | incluesion |                             |
+# |              | c            | 'CLOCK' keywords                          | incluesion |                             |
+# |              | creator      | creator information                       | incluesion |                             |
+# |              | date         | a date                                    | incluesion |                             |
+# |              | email        | author’s e-mail                          | incluesion |                             |
+# |              | timestamp    | creation time                             | incluesion |                             |
+# |              | title        | title                                     | incluesion |                             |
+# |              |              |                                           |            |                             |
+# |              |              |                                           |            |                             |
+# |              | e            | entities                                  | incluesion |                             |
+# |              | d            | drawers, or list of drawers               | incluesion | d:(not "LOGBOOK")           |
+# |              |              |                                           |            |                             |
+# |              | f            | footnotes                                 | incluesion |                             |
+# |              | arch         | how archived trees are exported           | Configure  | 'headline'                  |
+# |--------------+--------------+-------------------------------------------+------------+-----------------------------|
+# |              | broken-links |                                           |            |                             |
+# |              | H            |                                           |            |                             |
+# |              | inline       |                                           |            |                             |
+# |              | num          |                                           |            |                             |
+# |              | P            |                                           |            |                             |
+# |              | pir          |                                           |            |                             |
+# |              | prop         |                                           |            |                             |
+# |              | stat         |                                           |            |                             |
+# |              | tags         |                                           |            |                             |
+# |              | tasks        |                                           |            |                             |
+# |              | tex          |                                           |            |                             |
+# |              | toc          |                                           |            |                             |
+# |              | todo         |                                           |            |                             |
+
+# --
+#+title: $1
+#+subtitle: $2
+#+EXPORT_FILE_NAME: $3
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline
+#+options: author:t broken-links:nil c:nil creator:comment
+#+options: d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t num:t
+#+options: p:nil pri:nil prop:nil stat:t tags:t tasks:t tex:t
+#+options: timestamp:t title:t toc:nil todo:t |:t
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+date: <2020-03-12 四>
+#+author:
+#+email: songzc@archlinux
+#+creator: Emacs 26.3 (Org mode 9.3.3)
+
+#+DESCRIPTION:
+# #+KEYWORDS:
+
+
+# #+startup: inlineimages
+
+$0
+
+
+

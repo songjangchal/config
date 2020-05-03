@@ -2,6 +2,7 @@
 # name: src
 # key: <s
 # --
-#+begin_src ${1:$$(yas-choose-value '("plantuml" "c++" "bash"))}  ${2:pic/$3.png}
+#+begin_src ${1:$$(yas-choose-value '("plantuml" "c++" "bash" "xml" "json"))} 
 $0
 #+end_src
+

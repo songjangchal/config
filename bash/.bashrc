@@ -184,3 +184,4 @@ function win7() {
 
 
 export PATH="$PATH:/home/songzc/luactb-1.0.2"
+

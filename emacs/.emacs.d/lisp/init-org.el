@@ -1,10 +1,12 @@
 
 (require 'ob-plantuml)
-
+(require 'ob-ditaa)
 (setq org-plantuml-jar-path "~/mnt_hitachi/songzc/software/plantuml.jar")
 (setq org-babel-default-header-args:plantuml
       (cons '(:java . "-Dplantuml.include.path=\"/home/songzc/software/C4/\"")
-                 (assq-delete-all :java org-babel-default-header-args:plantuml)))
+            (assq-delete-all :java org-babel-default-header-args:plantuml)))
+
+(setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar")
 
 (setq org-confirm-babel-evaluate nil)
 
