@@ -137,5 +137,7 @@ PROJECT is the current project."
 
 (setq org-bullets-bullet-list '("☰" "☷" "☯"))
 
+(add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
+
 (provide 'init-org)
 

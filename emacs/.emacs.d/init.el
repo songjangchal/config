@@ -292,7 +292,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (yaml-mode cmake-font-lock google-translate org-web-tools ggtags w3m w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
+    (dts-mode yaml-mode cmake-font-lock google-translate org-web-tools ggtags w3m w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(yas-global-mode t))

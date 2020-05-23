@@ -1,0 +1,22 @@
+_global:
+  emailDeliveryMethod: smtp
+  smtpServer: mail.szc.com
+  authKey: szc_buda
+  scmCommand: "svn add %f ; svn commit -m '%m' %f"
+  projectId: prj
+_timesheets:
+  senderEmail: 'TaskJuggler <timesheets@taskjuggler.your_company.com>'
+  _sender:
+    hideResource: '~isleaf()'
+  _summary:
+    sheetRecipients:
+      - team@your_company.com
+    digestRecipients:
+      - managers@your_company.com
+_statussheets:
+  projectId: prj
+  _sender:
+    senderEmail: 'TaskJuggler <statussheets@taskjuggler.amd.com>'
+    hideResource: '~(isleaf()  & manager)'
+  _receiver:
+    senderEmail: 'TaskJuggler <statussheets@taskjuggler.amd.com>'

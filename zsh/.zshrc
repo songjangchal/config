@@ -131,4 +131,7 @@ function return-back-space(){
 
 alias ssink='scrot -e "inkscape \$f" -s'
 
+alias xmnd-recompile='env STACK_YAML=$HOME/open_source/xmonad-contrib/stack.yaml stack exec xmonad -- --recompile'
+
+alias run-gitit='env STACK_YAML=$HOME/open_source/gitit/stack.yaml stack exec Gitit -- -f config'
 

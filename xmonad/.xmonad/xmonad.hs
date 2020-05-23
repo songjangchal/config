@@ -48,10 +48,10 @@ import System.Posix.Env as Env
 
 -- import Shelly
 
-import Turtle
+--import Turtle
 
 import Control.Monad.Trans (liftIO)
-import System.Log.Logger (logM, Priority(..))
+-- import System.Log.Logger (logM, Priority(..))
 
 import System.Process
 
@@ -130,7 +130,7 @@ main = do
 
 --      let t = digitToInt monitor_num
     
-    liftIO $ logM "xmonad" WARNING $ " --------------   xrandr return: " ++ show monitor_num ++ " " ++ show screen1_width
+  --  liftIO $ logM "xmonad" WARNING $ " --------------   xrandr return: " ++ show monitor_num ++ " " ++ show screen1_width
 
 
     
