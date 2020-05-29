@@ -139,5 +139,7 @@ PROJECT is the current project."
 
 (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
+(setq org-mime-library 'semi)
+
 (provide 'init-org)
 

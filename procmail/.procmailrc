@@ -1,9 +1,10 @@
-PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin            
-MAILDIR=$HOME/Mail/                                    
-DEFAULT=$HOME/Mail/all                                 
+PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:$HOME/open_source/TaskJuggler/bin
+MAILDIR=$HOME/Maildir/                                    
+DEFAULT=$HOME/Maildir/all                                 
 LOGFILE=$MAILDIR/procmail.log                          
 SHELL=/bin/sh                                          
-PROJECTDIR=/home/taskjuggler/projects/prj       
+#PROJECTDIR=/home/taskjuggler/projects/prj
+PROJECTDIR=/home/songzc/project/m/inspection_robot
 # LANG=en_US.UTF-8                                       
 # LC_ALL=en_US.UTF-8                                     
 # Archive all incoming emails in a file called all 
@@ -13,7 +14,7 @@ all
 * ^Subject:.*Out of Office.*
 /dev/null                   
 :0
-* ^To:.*timesheets@taskjuggler\.your_company\.com
+* ^To:.*timesheets@szc\.com
 {                                       
   :0 c:                                 
   timesheets                            
@@ -23,7 +24,7 @@ all
   failed_sheets
 }
 :0
-* ^To:.*timesheet-request@taskjuggler\.your_company\.com
+* ^To:.*timesheet-request@szc\.com
 {
   ID=`formail -xSubject:`
   :0 c:
@@ -32,7 +33,7 @@ all
   | tj3ts_sender -r $ID -f --silent -c $PROJECTDIR/.taskjugglerrc -d $PROJECTDIR
 }
 :0
-* ^To:.*statussheets@taskjuggler\.your_company\.com
+* ^To:.*statussheets@szc\.com
 {
   :0 c:
   statussheets
@@ -42,7 +43,7 @@ all
   failed_sheets
 }
 :0
-* ^To:.*statussheet-request@taskjuggler\.your_company\.com
+* ^To:.*statussheet-request@szc\.com
 {
   ID=`formail -xSubject:`
   :0 c:
@@ -52,7 +53,7 @@ all
 }
 # Forward a copy to project admins
 :0 c
-! taskjuggler-admin@your_company.com
+! taskjuggler-admin@szc.com
 # Since we have archived a copy we can discard all mails here.
 :0
 /dev/null

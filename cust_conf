@@ -22,5 +22,8 @@ stow -t $HOME --no-folding emacs
 stow -t $HOME xorg
 stow -t / zhengma
 
+#stow -t $HOME taskjuggler
+stow -t $HOME procmail
+
 systemctl enable systemd-timesyncd.service
 

@@ -1,22 +1,27 @@
 _global:
   emailDeliveryMethod: smtp
   smtpServer: mail.szc.com
-  authKey: szc_buda
+  authKey: taskjuggler
+  _log:
+    logLevel: 4
+    outputLevel: 4
   scmCommand: "svn add %f ; svn commit -m '%m' %f"
-  projectId: prj
+#  projectId: robot
+  projectId: robot
+  projectId: robot_v1
 _timesheets:
-  senderEmail: 'TaskJuggler <timesheets@taskjuggler.your_company.com>'
+  senderEmail: 'TaskJuggler <timesheets@szc.com>'
   _sender:
     hideResource: '~isleaf()'
   _summary:
     sheetRecipients:
-      - team@your_company.com
+      - team@szc.com
     digestRecipients:
-      - managers@your_company.com
+      - managers@szc.com
 _statussheets:
-  projectId: prj
   _sender:
-    senderEmail: 'TaskJuggler <statussheets@taskjuggler.amd.com>'
+    senderEmail: 'TaskJuggler <statussheets@szc.com>'
     hideResource: '~(isleaf()  & manager)'
   _receiver:
-    senderEmail: 'TaskJuggler <statussheets@taskjuggler.amd.com>'
+    senderEmail: 'TaskJuggler <statussheets@szc.com>'
+ 

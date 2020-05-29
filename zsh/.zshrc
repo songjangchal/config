@@ -119,8 +119,7 @@ function setkb-hhkb(){
     xkbcomp $HOME/.hhkb.xkb $DISPLAY -i ${hhkb_id}
 }
 
-export PATH=$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
-
+export PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
 
 function return-back-space(){
     sudo journalctl --vacuum-time=2d
@@ -135,3 +134,5 @@ alias xmnd-recompile='env STACK_YAML=$HOME/open_source/xmonad-contrib/stack.yaml
 
 alias run-gitit='env STACK_YAML=$HOME/open_source/gitit/stack.yaml stack exec Gitit -- -f config'
 
+alias mlo='sudo dd if=./MLO of=/dev/sdc count=2 seek=1 bs=128k'
+alias ubo='sudo dd if=./u-boot.img of=/dev/sdc count=4 seek=1 bs=384k'
