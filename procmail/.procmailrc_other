@@ -1,0 +1,14 @@
+PATH=$HOME/bin:/usr/bin:/bin:/usr/local/bin:$HOME/open_source/TaskJuggler/bin
+MAILDIR=$HOME/Maildir/                                    
+DEFAULT=$HOME/Maildir/new                                 
+LOGFILE=$MAILDIR/procmail.log                          
+SHELL=/bin/sh                                          
+#PROJECTDIR=/home/taskjuggler/projects/prj
+PROJECTDIR=/home/songzc/project/m/inspection_robot
+LANG=en_US.UTF-8                                       
+LC_ALL=en_US.UTF-8                                     
+# Archive all incoming emails in a file called all 
+:0 c
+new
+:0
+/dev/null
