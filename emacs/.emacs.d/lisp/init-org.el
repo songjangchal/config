@@ -141,5 +141,51 @@ PROJECT is the current project."
 
 (setq org-mime-library 'semi)
 
+(setq org-roam-directory "~/new-brain")
+(add-hook 'after-init-hook 'org-roam-mode)
+
+(require 'org-roam-protocol)
+
+(require 'company-org-roam)
+(push 'company-org-roam company-backends)
+
+
+;;(use-package org-download
+;;  :after org
+;;  :bind
+;;  (:map org-mode-map
+;;        (("s-Y" . org-download-screenshot)
+;;         ("s-y" . org-download-yank))))
+
+
+
+;;   org-journal  Currently supported placeholders are:
+;;%Y is the year.
+;;%m is the numeric month.
+;;%d is the day of the month, zero-padded.
+;;%a is the locale’s abbreviated name of the day of week, %A the full name.
+;;%b is the locale's abbreviated name of the month, %B the full name.
+;;%F is the ISO 8601 date format (like \"%+4Y-%m-%d\").
+(use-package org-journal
+  :bind
+  ("s-j" . org-journal-new-entry)
+  :custom
+  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-dir "~/new-brain")
+  (org-journal-date-format "%F, %A")) 
+  ;;(org-journal-date-format "%a, %d %b %Y")) 
+;;  (org-journal-date-format "%A, %d %B %Y"))
+
+
+(setq deft-directory "~/new-brain")
+(setq deft-extensions '("org" "txt" "tex"))
+(setq deft-new-file-format "%Y%m%d%H%M")
+
+(setq deft-use-filter-string-for-filename t)
+(setq deft-file-naming-rules '((noslash . "_")
+                               (nospace . "_")
+                               (case-fn . downcase)))
+
 (provide 'init-org)
 

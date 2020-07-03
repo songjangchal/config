@@ -325,7 +325,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,                    xK_space    ), sendMessage NextLayout)
     , ((modMask .|. shiftMask,      xK_space    ), setLayout $ XMonad.layoutHook conf)          -- reset layout on current desktop to default
     , ((modMask,                    xK_s        ), sendMessage ToggleStruts)
-    , ((modMask,                    xK_f        ), refresh)
+--    , ((modMask,                    xK_f        ), refresh)
     , ((modMask,                    xK_Tab      ), windows W.focusDown)                         -- move focus to next window
     , ((modMask,                    xK_n        ), windows W.focusDown)
     , ((modMask,                    xK_p        ), windows W.focusUp  )

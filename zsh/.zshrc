@@ -136,3 +136,51 @@ alias run-gitit='env STACK_YAML=$HOME/open_source/gitit/stack.yaml stack exec Gi
 
 alias mlo='sudo dd if=./MLO of=/dev/sdc count=2 seek=1 bs=128k'
 alias ubo='sudo dd if=./u-boot.img of=/dev/sdc count=4 seek=1 bs=384k'
+
+function kocp {
+     sudo mount /dev/sdc1 /mnt
+     sudo cp $HOME/codbase/tronlong/ksz8795/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
+     
+     sudo cp $HOME/codbase/tronlong/rotary-encoder/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/input/misc/.
+     sync
+     sudo umount /mnt
+}
+
+
+#function kocp {
+#     sudo mount /dev/sdc1 /mnt
+#     sudo cp $HOME/codbase/tronlong/microchip/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
+#     sudo sync
+#     sudo umount /mnt
+#}
+
+
+function lkcp {
+     sudo mount /dev/sdc1 /mnt
+     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/zImage /mnt//boot/vmlinuz-4.19.94-r43
+     sudo sync
+     sudo umount /mnt
+}
+
+
+function dtbcp {
+     sudo mount /dev/sdc1 /mnt
+     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/*.dtb /mnt//boot/dtbs/4.19.94-r43/.
+     sudo sync
+     sudo umount /mnt
+}
+
+
+function aicp {
+    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dts   /home/songzc/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/.
+    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dtsi   /home/songzc/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/.
+    
+}
+
+
+function dsacp {
+     sudo mount /dev/sdc1 /mnt
+     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/net/dsa/*.ko /mnt/lib/modules/4.19.94/kernel/net/dsa/. 
+     sync
+     sudo umount /mnt
+}

@@ -140,7 +140,9 @@
                  ;; Set dired-x buffer-local variables here.  For example:
                  ;; (dired-omit-mode 1)
                  (setq dired-omit-extensions
-                       (append '(".d" ".o" ".a" ".so" ".bak")  dired-omit-extensions ))
+                       (append '(".d" ".o" ".a" ".so" ".bak" ".cmd" ".ko" ".mod.c")  dired-omit-extensions ))
+                 (setq dired-omit-files
+                       (concat  "cscope\\..*\\|" "^\\..*\\|" dired-omit-files))
                  ))
 
 
@@ -162,10 +164,12 @@
 ;; see https://mirrors.tuna.tsinghua.edu.cn/help/elpa/
 
 (require 'package)
-(add-to-list 'package-archives'
-             ("elpa" . "http://tromey.com/elpa/") t)
-(add-to-list 'package-archives'
-             ("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives'
+;;              ("elpa" . "http://tromey.com/elpa/") t)
+;; (add-to-list 'package-archives'
+;;              ("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives'
              ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t)
 (package-initialize)
@@ -281,7 +285,6 @@
       'wl-draft-kill
       'mail-send-hook))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -292,7 +295,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (dts-mode yaml-mode cmake-font-lock google-translate org-web-tools ggtags w3m w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
+    (calfw-org calfw calfw-cal org-journal deft org-roam org-roam-bibtex org-roam-server dts-mode yaml-mode cmake-font-lock google-translate org-web-tools ggtags w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(yas-global-mode t))
@@ -312,9 +315,13 @@
 (global-set-key [(meta h)] 'backward-kill-word)
 (global-set-key (kbd "M-g g") 'goto-line)
 
-
 ;;
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M--") 'text-scale-decrease)
+(global-set-key (kbd "s-i") 'org-roam-insert)
+(global-set-key (kbd "s-f") 'org-roam-find-file)
+(global-set-key (kbd "s-d") 'deft)
 
 
+;;(require 'calfw)
+(require 'calfw-org)
