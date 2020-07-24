@@ -159,6 +159,16 @@ PROJECT is the current project."
 
 
 
+;;  org-journal
+(defun org-journal-file-header-func (time)
+  "Custom function to create journal header."
+  (concat
+   (pcase org-journal-file-type
+     (`daily "#+TITLE: Daily Journal\n#+STARTUP: showeverything\n- tags :: [[yfile:%Y-%m.org][%Y-%m]]")
+     (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
+     (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
+     (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
+
 ;;   org-journal  Currently supported placeholders are:
 ;;%Y is the year.
 ;;%m is the numeric month.
@@ -170,22 +180,45 @@ PROJECT is the current project."
   :bind
   ("s-j" . org-journal-new-entry)
   :custom
-  (org-journal-date-prefix "#+TITLE: ")
-  (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-dir "~/new-brain")
-  (org-journal-date-format "%F, %A")) 
-  ;;(org-journal-date-format "%a, %d %b %Y")) 
+  (org-journal-file-format "%Y-%m-%d.org")  
+;  (org-journal-date-prefix "#+TITLE: ")
+  (org-journal-date-format "%F, %A")
+  (org-journal-file-header "#+TITLE: %F, %A, Dialy Journal\n#+STARTUP: showeverything\n- tags :: [[file:%Y-%m.org][%Y-%m]]"))
+  ;;(org-journal-date-format "%a, %d %b %Y"))
 ;;  (org-journal-date-format "%A, %d %B %Y"))
+
+
 
 
 (setq deft-directory "~/new-brain")
 (setq deft-extensions '("org" "txt" "tex"))
-(setq deft-new-file-format "%Y%m%d%H%M")
+(setq deft-new-file-format "%Y%m%d%H%M%S")
 
-(setq deft-use-filter-string-for-filename t)
+;; (setq deft-use-filter-string-for-filename t)
 (setq deft-file-naming-rules '((noslash . "_")
                                (nospace . "_")
                                (case-fn . downcase)))
+
+
+;;--------------replace deft.el deft-new-file by manualy
+;;          (defun deft-new-file ()
+;;            "Create a new file quickly.
+;;          Use either an automatically generated filename or the filter string if non-nil
+;;          and `deft-use-filter-string-for-filename' is set.  If the filter string is
+;;          non-nil and title is not from filename, use it as the title."
+;;            (interactive)
+;;            (let* ((time-part (deft-unused-slug))
+;;                   (name-part (deft-whole-filter-regexp))
+;;                   (slug (concat time-part "-"  name-part)))
+;;          ;;    (if (and deft-filter-regexp deft-use-filter-string-for-filename)
+;;          ;;        ;; If the filter string is non-emtpy and titles are taken from
+;;          ;;        ;; filenames is set, construct filename from filter string.
+;;          ;;        (setq slug (deft-whole-filter-regexp))
+;;          ;;      ;; If the filter string is empty, or titles are taken from file
+;;          ;;      ;; contents, then use an automatically generated unique filename.
+;;          ;;      (setq slug (deft-unused-slug)))
+;;              (deft-new-file-named slug)))
 
 (provide 'init-org)
 

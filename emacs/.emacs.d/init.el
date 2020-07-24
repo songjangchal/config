@@ -307,6 +307,14 @@
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 ;;  '(default ((t (:family "Noto Sans Mono" :foundry "DAMA" :slant normal :weight normal :height 110 :width normal)))))
 
+;;(require 'calfw)
+(require 'calfw-org)
+
+(load "lilypond-init.el")
+
+;; (unless org-roam-server-mode
+;;   (org-roam-server-mode))
+
 
 ;; global key settings
 (global-set-key [(control h)] 'delete-backward-char)
@@ -323,5 +331,5 @@
 (global-set-key (kbd "s-d") 'deft)
 
 
-;;(require 'calfw)
-(require 'calfw-org)
+
+

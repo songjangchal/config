@@ -4,7 +4,8 @@ DEFAULT=$HOME/Maildir/new
 LOGFILE=$MAILDIR/procmail.log                          
 SHELL=/bin/sh                                          
 #PROJECTDIR=/home/taskjuggler/projects/prj
-PROJECTDIR=/home/songzc/project/m/inspection_robot
+#PROJECTDIR=/home/songzc/project/m/inspection_robot
+PROJECTDIR=/home/songzc/road
 LANG=en_US.UTF-8                                       
 LC_ALL=en_US.UTF-8                                     
 # Archive all incoming emails in a file called all 

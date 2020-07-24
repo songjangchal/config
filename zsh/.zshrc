@@ -100,14 +100,16 @@ source $ZSH/oh-my-zsh.sh
 
 #jlink
 #alias fhex="JLinkExe -Device stm32f207vg -If SWD -Speed 4000"
-alias fhex4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f4_burn.jlink"
-alias fhex1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f1_burn.jlink"
-
-alias j4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000"
-alias j1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000"
+#alias fhex4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f4_burn.jlink"
+#alias fhex1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f1_burn.jlink"
+alias fhex1="JLinkExe -Device stm32f107rc -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f107_burn.jlink"
+#alias j4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000"
+#alias j1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000"
+alias j1="JLinkExe -Device stm32f107rc -If SWD -Speed 4000"
 
 #jlinkrttlog
-alias rttlog="JLinkRTTLogger -Device stm32f103c8 -If SWD -Speed 4000 -RTTChannel 0 /tmp/rtt.log"
+#alias rttlog="JLinkRTTLogger -Device stm32f407zg -If SWD -Speed 4000 -RTTChannel 0 /tmp/rtt.log"
+alias rttlog="JLinkRTTLogger -Device stm32f107rc -If SWD -Speed 4000 -RTTChannel 0 /tmp/rtt.log"
 
 hash -d src="$HOME/mnt_hitachi/songzc/codbase/"
 
