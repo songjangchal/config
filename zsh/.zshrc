@@ -113,6 +113,11 @@ alias rttlog="JLinkRTTLogger -Device stm32f107rc -If SWD -Speed 4000 -RTTChannel
 
 hash -d src="$HOME/mnt_hitachi/songzc/codbase/"
 
+function setmouse-ks(){
+    trackball_id=`xinput list --id-only  "Kensington Kensington Slimblade Trackball"`
+    xinput set-button-map ${trackball_id} 3 2 1 4 5 6 7
+    xinput --set-prop $trackball_id 'libinput Accel Speed' 1 # 设置 mouse 速度 (-1.0 ~1.0)
+}
 
 function setkb-hhkb(){
     hhkb_id=`xinput list --id-only  "Topre Corporation HHKB Professional"`
@@ -121,7 +126,16 @@ function setkb-hhkb(){
     xkbcomp $HOME/.hhkb.xkb $DISPLAY -i ${hhkb_id}
 }
 
+alias setd2="xrandr --output VGA-1 --auto --left-of LVDS-1"
+alias offd2="xrandr --output VGA-1 --off"
+
+
 export PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
+
+export PATH=/usr/bin/vendor_perl:$PATH
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 
 function return-back-space(){
     sudo journalctl --vacuum-time=2d
@@ -136,17 +150,33 @@ alias xmnd-recompile='env STACK_YAML=$HOME/open_source/xmonad-contrib/stack.yaml
 
 alias run-gitit='env STACK_YAML=$HOME/open_source/gitit/stack.yaml stack exec Gitit -- -f config'
 
-alias mlo='sudo dd if=./MLO of=/dev/sdc count=2 seek=1 bs=128k'
-alias ubo='sudo dd if=./u-boot.img of=/dev/sdc count=4 seek=1 bs=384k'
+alias rm="rm-p"
 
-function kocp {
-     sudo mount /dev/sdc1 /mnt
-     sudo cp $HOME/codbase/tronlong/ksz8795/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
-     
-     sudo cp $HOME/codbase/tronlong/rotary-encoder/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/input/misc/.
-     sync
-     sudo umount /mnt
-}
+
+
+########################################## AIR 800 ###############################################
+
+air_kernel_src_version=linux-4.19.94-ti-r51
+air_kernel_version=4.19.94
+
+#air_ip=192.168.56.254
+air_ip=192.168.153.20
+
+##air_kernel_src_version=linux-5.4.66-ti-r18
+##air_kernel_version=5.4.66
+
+
+alias mlo='sudo dd if=$HOME/codbase/tronlong/u-boot-2019.07-rc4/MLO of=/dev/sdc count=2 seek=1 bs=128k'
+alias ubo='sudo dd if=$HOME/codbase/tronlong/u-boot-2019.07-rc4/u-boot.img of=/dev/sdc count=4 seek=1 bs=384k'
+
+#function kocp {
+#     sudo mount /dev/sdc1 /mnt
+#     sudo cp $HOME/codbase/tronlong/driver/ksz8795/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
+#     
+#     sudo cp $HOME/codbase/tronlong/driver/rotary-encoder/*.ko /mnt/lib/modules/4.19.94/kernel/drivers/input/misc/.
+#     sync
+#     sudo umount /mnt
+#}
 
 
 #function kocp {
@@ -157,32 +187,77 @@ function kocp {
 #}
 
 
-function lkcp {
-     sudo mount /dev/sdc1 /mnt
-     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/zImage /mnt//boot/vmlinuz-4.19.94-r43
-     sudo sync
-     sudo umount /mnt
+#function lkcp {
+#    #sudo mount /dev/sdc1 /mnt
+#    sudo mount /dev/sdd1 /mnt
+#    sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/zImage /mnt/boot/vmlinuz-4.19.94-r43
+#     sudo sync
+#     sudo umount /mnt
+#}
+#
+#
+#function dtbcp {
+#    #sudo mount /dev/sdc1 /mnt
+#    sudo mount /dev/sdc1 /mnt
+#    sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/*.dtb /mnt/boot/dtbs/4.19.94-r43/.
+#    sudo sync
+#    sudo umount /mnt
+#}
+#
+#
+#
+#function dsacp {
+#     sudo mount /dev/sdc1 /mnt
+#     sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/net/dsa/*.ko /mnt/lib/modules/4.19.94/kernel/net/dsa/. 
+#     sync
+#     sudo umount /mnt
+#}
+#
+#
+#function rfcp {
+#    kernel_version=4.19.94
+#    sudo sh -c "echo 'uname_r=${kernel_version}' >> /$HOME/codbase/tronlong/rootfs/boot/uEnv.txt"
+#    sudo cp -rfv  $HOME/codbase/tronlong/${air_kernel_src_version}/deploy/lib  $HOME/codbase/tronlong/rootfs
+#    sudo cp $HOME/codbase/tronlong/driver/ksz8795/*.ko $HOME/codbase/tronlong/rootfs/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
+#    sudo cp $HOME/codbase/tronlong/driver/rotary-encoder/*.ko $HOME/codbase/tronlong/rootfs/lib/modules/4.19.94/kernel/drivers/input/misc/.
+#    sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/zImage $HOME/codbase/tronlong/rootfs//boot/vmlinuz-4.19.94
+#    sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/*.dtb $HOME/codbase/tronlong/rootfs//boot/dtbs/4.19.94/.
+#    sudo cp $HOME/codbase/tronlong/${air_kernel_src_version}/net/dsa/*.ko $HOME/codbase/tronlong/rootfs/lib/modules/4.19.94/kernel/net/dsa/.
+#}
+
+
+function aicp {
+    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dts   /home/songzc/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/.
+    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dtsi   /home/songzc/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/.
 }
 
 
 function dtbcp {
-     sudo mount /dev/sdc1 /mnt
-     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/*.dtb /mnt//boot/dtbs/4.19.94-r43/.
-     sudo sync
-     sudo umount /mnt
+    #scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/*.dtb root@${air_ip}:/boot/dtbs/${air_kernel_version}/.
+    scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/am5729-beagleboneai.dtb  root@${air_ip}:/boot/dtbs/${air_kernel_version}/.
+}
+
+function kocp {
+    scp $HOME/codbase/tronlong/driver/ksz8795/*.ko root@${air_ip}:/lib/modules/${air_kernel_version}/kernel/drivers/net/dsa/microchip/.
+    scp $HOME/codbase/tronlong/driver/rotary-encoder/*.ko root@${air_ip}:/lib/modules/${air_kernel_version}/kernel/drivers/input/misc/.
+    #scp $HOME/codbase/tronlong/driver/microchip/*.ko root@${air_ip}:/lib/modules/4.19.94/kernel/drivers/net/dsa/microchip/.
 }
 
 
-function aicp {
-    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dts   /home/songzc/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/.
-    cp /home/songzc/codbase/tronlong/dts-source/linux-bbai/*.dtsi   /home/songzc/codbase/tronlong/linux-4.19.94-ti-rt-r43/arch/arm/boot/dts/.
-    
+function kmcp {
+    scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/deploy/lib  root@${air_ip}:/
+    scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/zImage root@${air_ip}:/boot/vmlinuz-${air_kernel_version}
 }
 
 
-function dsacp {
-     sudo mount /dev/sdc1 /mnt
-     sudo cp $HOME/codbase/tronlong/linux-4.19.94-ti-rt-r43/net/dsa/*.ko /mnt/lib/modules/4.19.94/kernel/net/dsa/. 
-     sync
-     sudo umount /mnt
+function tlcp {
+    scp -r $HOME/codbase/tronlong/tools/evtest  root@${air_ip}:~/.
+    scp -r $HOME/codbase/tronlong/tools/devmem2  root@${air_ip}:~/.
+    scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/tools/spi/spi_lcd  root@${air_ip}:~/.
+    scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/tools/spi/spidev_test  root@${air_ip}:~/.
 }
+
+
+
+
+

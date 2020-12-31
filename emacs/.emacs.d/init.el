@@ -36,18 +36,18 @@
 (display-time-mode 1)
 
 ;;backup
-;; ËùÓÐµÄ±¸·ÝÎÄ¼þ×ªÒÆµ½~/backupsÄ¿Â¼ÏÂ
+;; ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½×ªï¿½Æµï¿½~/backupsÄ¿Â¼ï¿½ï¿½
 (setq version-control t)
 (setq kept-old-versions 2)
 (setq kept-new-versions 5)
 (setq delete-old-versions t)
 (setq backup-directory-alist '(("." . "~/backups")))
 (setq backup-by-copying t)
-;; Emacs ÖÐ£¬¸Ä±äÎÄ¼þÊ±£¬Ä¬ÈÏ¶¼»á²úÉú±¸·ÝÎÄ¼þ(ÒÔ ~ ½áÎ²µÄÎÄ¼þ)¡£¿ÉÒÔÍêÈ«È¥µô
-;; (²¢²»¿ÉÈ¡)£¬Ò²¿ÉÒÔÖÆ¶¨±¸·ÝµÄ·½Ê½¡£ÕâÀï²ÉÓÃµÄÊÇ£¬°ÑËùÓÐµÄÎÄ¼þ±¸·Ý¶¼·ÅÔÚÒ»
-;; ¸ö¹Ì¶¨µÄµØ·½("~/var/tmp")¡£¶ÔÓÚÃ¿¸ö±¸·ÝÎÄ¼þ£¬±£Áô×îÔ­Ê¼µÄÁ½¸ö°æ±¾ºÍ×îÐÂµÄ
-;; Îå¸ö°æ±¾¡£²¢ÇÒ±¸·ÝµÄÊ±ºò£¬±¸·ÝÎÄ¼þÊÇ¸´±¾£¬¶ø²»ÊÇÔ­¼þ¡£
-;;²»²úÉú±¸·ÝÎÄ¼þ
+;; Emacs ï¿½Ð£ï¿½ï¿½Ä±ï¿½ï¿½Ä¼ï¿½Ê±ï¿½ï¿½Ä¬ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½(ï¿½ï¿½ ~ ï¿½ï¿½Î²ï¿½ï¿½ï¿½Ä¼ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«È¥ï¿½ï¿½
+;; (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡)ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ÝµÄ·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+;; ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ÄµØ·ï¿½("~/var/tmp")ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½
+;; ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½ï¿½ï¿½Ò±ï¿½ï¿½Ýµï¿½Ê±ï¿½ò£¬±ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½
+;;ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 
 (global-set-key [f11] 'my-fullscreen)
 
@@ -60,7 +60,7 @@
 
 
 ;;chinese
-(setq sentence-end "\\([¡££¡£¿]\\|¡­¡­\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end "\\([ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]\\|ï¿½ï¿½ï¿½ï¿½\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;
 ;;(create-fontset-from-fontset-spec
@@ -153,6 +153,12 @@
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
 
+(global-hl-line-mode 1)
+(set-face-background 'highlight "#222")
+(set-face-foreground 'highlight nil)
+(set-face-underline-p 'highlight t)
+
+
 
 ;;=============================
 ;;  color-theme
@@ -164,14 +170,10 @@
 ;; see https://mirrors.tuna.tsinghua.edu.cn/help/elpa/
 
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-;; (add-to-list 'package-archives'
-;;              ("elpa" . "http://tromey.com/elpa/") t)
-;; (add-to-list 'package-archives'
-;;              ("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives'
-             ("org" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/") t)
+;; "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+                         ("melpa" . "http://elpa.emacs-china.org/melpa/")
+                         ("org" .  "http://elpa.emacs-china.org/org/") ))
 (package-initialize)
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -204,8 +206,8 @@
 
 
 (require 'pyim)
-(require 'pyim-basedict) ; Æ´Òô´Ê¿âÉèÖÃ£¬Îå±ÊÓÃ»§ *²»ÐèÒª* ´ËÐÐÉèÖÃ
-(pyim-basedict-enable)   ; Æ´Òô´Ê¿â£¬Îå±ÊÓÃ»§ *²»ÐèÒª* ´ËÐÐÉèÖÃ
+(require 'pyim-basedict) ; Æ´ï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ *ï¿½ï¿½ï¿½ï¿½Òª* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+(pyim-basedict-enable)   ; Æ´ï¿½ï¿½ï¿½Ê¿â£¬ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ *ï¿½ï¿½ï¿½ï¿½Òª* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 (setq default-input-method "pyim")
 
 
@@ -264,7 +266,7 @@
 
 
 (setq exec-path-from-shell-variables '("PATH" "MANPATH" "GOROOT" "GOPATH" "EDITOR" "PYTHONPATH"))
-;; Éè³Énil Ôò²»´Ó .zshrc ¶Á Ö»´Ó .zshenv¶Á£¨¿ÉÒÔ¼Ó¿ìËÙ¶È£¬µ«ÊÇÐèÒªÄã½«»·¾³±äÁ¿Ïà¹ØµÄ¶¼·Åµ½ .zshenv ÖÐ£¬¶ø·Ç .zshrc ÖÐ£©
+;; ï¿½ï¿½ï¿½nil ï¿½ò²»´ï¿½ .zshrc ï¿½ï¿½ Ö»ï¿½ï¿½ .zshenvï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼Ó¿ï¿½ï¿½Ù¶È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ã½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ¶ï¿½ï¿½Åµï¿½ .zshenv ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ .zshrc ï¿½Ð£ï¿½
 ;;(setq exec-path-from-shell-check-startup-files nil) ;
 ;;(setq exec-path-from-shell-arguments '("-l" )) ;remove -i read form .zshenv
 (exec-path-from-shell-initialize)
@@ -290,14 +292,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
  '(debug-on-error t)
+ '(default-input-method "rime")
  '(display-time-mode t)
+ '(org-journal-date-format "%F, %A")
+ '(org-journal-dir "~/new-brain")
+ '(org-journal-file-format "%Y-%m-%d.org")
+ '(org-journal-file-header
+   "#+TITLE: %F, %A, Dialy Journal
+#+STARTUP: showeverything
+- tags :: [[file:%Y-%m.org][%Y-%m]]")
  '(package-selected-packages
-   (quote
-    (calfw-org calfw calfw-cal org-journal deft org-roam org-roam-bibtex org-roam-server dts-mode yaml-mode cmake-font-lock google-translate org-web-tools ggtags w3 xcscope dismal julia-mode yasnippet-snippets wanderlust prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode use-package vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode python-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode yasnippet)))
- '(show-paren-mode t)
- '(tool-bar-mode nil)
+   '(python-mode yasnippet-snippets rime calfw-org calfw calfw-cal org-journal deft org-roam org-roam-bibtex org-roam-server dts-mode cmake-font-lock google-translate org-web-tools ggtags w3 xcscope dismal julia-mode prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -306,12 +312,20 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 ;;  '(default ((t (:family "Noto Sans Mono" :foundry "DAMA" :slant normal :weight normal :height 110 :width normal)))))
+;;  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 
 ;;(require 'calfw)
 (require 'calfw-org)
 
 (load "lilypond-init.el")
 
+(use-package rime
+  :custom
+  (default-input-method "rime"))
+(setq rime-show-candidate 'posframe)
+(setq rime-posframe-style 'vertical)
+(setq rime-translate-keybindings
+  '("s-SPC" "C-v" "M-v" "C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
 ;; (unless org-roam-server-mode
 ;;   (org-roam-server-mode))
 
@@ -333,3 +347,11 @@
 
 
 
+
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '(
+    (emacs-lisp . t)
+;;    (sh t)
+    (org t)
+    (lilypond t)))

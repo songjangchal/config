@@ -17,7 +17,7 @@ xss-lock -- /usr/bin/slock &
 
 #trackball
 trackball_id=`xinput list --id-only  "Kensington Kensington Slimblade Trackball"`
-#xinput set-button-map ${trackball_id} 3 2 1 4 5 6 7
+xinput set-button-map ${trackball_id} 3 2 1 4 5 6 7
 xinput --set-prop $trackball_id 'libinput Accel Speed' 1 # 设置 mouse 速度 (-1.0 ~1.0)
 
 

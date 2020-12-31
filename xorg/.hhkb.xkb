@@ -11,6 +11,11 @@ xkb_keymap {
         <BKSP> = 77;
         <RTRN> = 22;
 
+        //<POWR> = 255;
+        <MENU> = 124; //disable power key
+
+        //<MENU> = 66;  //to switch input method
+        <FK22> = 66;  //to switch input method
         //switch
         //<BKSL> = 51; 
     };
@@ -32,8 +37,12 @@ xkb_keymap {
         include "pc+us(dvp)+level3(ralt_alt)"
         key <AC07> {
             type[Group1] = "ASCII_CONTROL_THREE",
-                symbols[Group1] = [h, H, BackSpace],
-                actions[Group1] = [NoAction(), NoAction(), NoAction()]
+            symbols[Group1] = [h, H, BackSpace],
+            actions[Group1] = [NoAction(), NoAction(), NoAction()]
+        };
+        key <FK22> {
+            type= "CTRL+ALT",
+            symbols[Group1]= [              F22,              F22,              F22,              F22, XF86Switch_VT_22 ]
         };
     };
 	xkb_geometry  { include "pc(pc104)"	};

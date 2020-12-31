@@ -2,9 +2,14 @@
 (require 'ob-plantuml)
 (require 'ob-ditaa)
 (setq org-plantuml-jar-path "~/mnt_hitachi/songzc/software/plantuml.jar")
+
 (setq org-babel-default-header-args:plantuml
       (cons '(:java . "-Dplantuml.include.path=\"/home/songzc/software/C4/\"")
             (assq-delete-all :java org-babel-default-header-args:plantuml)))
+
+
+(setq plantuml-default-exec-mode 'jar)
+(setq plantuml-jar-path "~/mnt_hitachi/songzc/software/plantuml.jar")
 
 (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar")
 
@@ -87,6 +92,9 @@ PROJECT is the current project."
 
 
 (require 'ox-reveal)
+(setq org-reveal-root ".")
+;;(setq org-reveal-title-slide nil)
+
 (require 'ox-md)
 (require 'ox-pandoc-md)
 (require 'ox-confluence)
@@ -94,17 +102,17 @@ PROJECT is the current project."
 (require 'org-capture)
 
 ;; org-brain
-(use-package org-brain :ensure t
-  :init
-  (setq org-brain-path "~/szc_life/org-brain")
-  :config
-  (setq org-id-track-globally t)
-  (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
-  (push '("b" "Brain" plain (function org-brain-goto-end)
-          "* %i%?" :empty-lines 1)
-        org-capture-templates)
-  (setq org-brain-visualize-default-choices 'all)
-  (setq org-brain-title-max-length 12))
+;;(use-package org-brain :ensure t
+;;  :init
+;;  (setq org-brain-path "~/szc_life/org-brain")
+;;  :config
+;;  (setq org-id-track-globally t)
+;;  (setq org-id-locations-file "~/.emacs.d/.org-id-locations")
+;;  (push '("b" "Brain" plain (function org-brain-goto-end)
+;;          "* %i%?" :empty-lines 1)
+;;        org-capture-templates)
+;;  (setq org-brain-visualize-default-choices 'all)
+;;  (setq org-brain-title-max-length 12))
 
 (defun aa2u-buffer ()
   (aa2u (point-min) (point-max)))
@@ -219,6 +227,15 @@ PROJECT is the current project."
 ;;          ;;      ;; contents, then use an automatically generated unique filename.
 ;;          ;;      (setq slug (deft-unused-slug)))
 ;;              (deft-new-file-named slug)))
+
+(setq org-latex-to-mathml-convert-command
+      "java -jar %j -unicode -force -df %o %I"
+      org-latex-to-mathml-jar-file
+      "~/software/mathtoweb.jar")
+
+;;(setq org-latex-to-mathml-convert-command
+;;      "/usr/bin/site_perl/latexmlmath \"%i\" --presentationmathml=%o")
+;;
 
 (provide 'init-org)
 
