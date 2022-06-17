@@ -16,11 +16,10 @@ xss-lock -- /usr/bin/slock &
 # exchange button left and button right
 
 #trackball
-trackball_id=`xinput list --id-only  "Kensington Kensington Slimblade Trackball"`
+#trackball_id=`xinput list --id-only  "Kensington Kensington Slimblade Trackball"`
+trackball_id=`xinput list --id-only  "Kensington Expert Wireless TB Mouse"`
 xinput set-button-map ${trackball_id} 3 2 1 4 5 6 7
 xinput --set-prop $trackball_id 'libinput Accel Speed' 1 # 设置 mouse 速度 (-1.0 ~1.0)
-
-
 
 thinkpad_id=`xinput list --id-only  "AT Translated Set 2 keyboard"`
 hhkb_id=`xinput list --id-only  "Topre Corporation HHKB Professional"`

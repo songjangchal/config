@@ -1,7 +1,7 @@
 
 (require 'ob-plantuml)
 (require 'ob-ditaa)
-(setq org-plantuml-jar-path "~/mnt_hitachi/songzc/software/plantuml.jar")
+(setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
 
 (setq org-babel-default-header-args:plantuml
       (cons '(:java . "-Dplantuml.include.path=\"/home/songzc/software/C4/\"")
@@ -9,7 +9,7 @@
 
 
 (setq plantuml-default-exec-mode 'jar)
-(setq plantuml-jar-path "~/mnt_hitachi/songzc/software/plantuml.jar")
+(setq plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
 
 (setq org-ditaa-jar-path "/usr/share/java/ditaa/ditaa-0.11.jar")
 
@@ -92,12 +92,14 @@ PROJECT is the current project."
 
 
 (require 'ox-reveal)
-(setq org-reveal-root ".")
+(setq org-reveal-root "/home/songzc/codbase/reveal.js/release")
+(setq org-reveal-mathjax-url "file:///home/songzc/codbase/reveal.js/MathJax-master/es5/tex-chtml.js")
+
 ;;(setq org-reveal-title-slide nil)
 
 (require 'ox-md)
 (require 'ox-pandoc-md)
-(require 'ox-confluence)
+; (require 'ox-confluence)
 (require 'org-protocol)
 (require 'org-capture)
 
@@ -150,12 +152,12 @@ PROJECT is the current project."
 (setq org-mime-library 'semi)
 
 (setq org-roam-directory "~/new-brain")
-(add-hook 'after-init-hook 'org-roam-mode)
+; (add-hook 'after-init-hook 'org-roam-mode)
 
-(require 'org-roam-protocol)
+;(require 'org-roam-protocol)
 
-(require 'company-org-roam)
-(push 'company-org-roam company-backends)
+;(require 'company-org-roam)
+;(push 'company-org-roam company-backends)
 
 
 ;;(use-package org-download
@@ -203,7 +205,7 @@ PROJECT is the current project."
 (setq deft-extensions '("org" "txt" "tex"))
 (setq deft-new-file-format "%Y%m%d%H%M%S")
 
-;; (setq deft-use-filter-string-for-filename t)
+;;(setq deft-use-filter-string-for-filename t)
 (setq deft-file-naming-rules '((noslash . "_")
                                (nospace . "_")
                                (case-fn . downcase)))
@@ -233,9 +235,12 @@ PROJECT is the current project."
       org-latex-to-mathml-jar-file
       "~/software/mathtoweb.jar")
 
-;;(setq org-latex-to-mathml-convert-command
-;;      "/usr/bin/site_perl/latexmlmath \"%i\" --presentationmathml=%o")
-;;
+;; (setq org-latex-to-mathml-convert-command
+;;        "/usr/bin/site_perl/latexmlmath \"%i\" --presentationmathml=%o")
+
+;; (setq org-latex-to-mathml-convert-command
+;;       "/usr/bin/latex2mathml -t \"%i\" > %o")
+
 
 (provide 'init-org)
 

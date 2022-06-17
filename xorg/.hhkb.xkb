@@ -42,7 +42,7 @@ xkb_keymap {
         };
         key <FK22> {
             type= "CTRL+ALT",
-            symbols[Group1]= [              F22,              F22,              F22,              F22, XF86Switch_VT_22 ]
+            symbols[Group1]= [ F22, F22, F22, F22, XF86Switch_VT_22 ]
         };
     };
 	xkb_geometry  { include "pc(pc104)"	};

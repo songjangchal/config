@@ -171,9 +171,12 @@
 
 (require 'package)
 ;; "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/"
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")
-                         ("org" .  "http://elpa.emacs-china.org/org/") ))
+;;(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+;;                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;;                         ("org" .  "http://elpa.emacs-china.org/org/") ))
+
+(setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
+                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -221,7 +224,7 @@
 ;; python
 ;(setq load-path (cons "~/site-lisp/python-mode-1.0" load-path))
 (setq auto-mode-alist
-      (cons '("\\.py$" . python-mode) auto-mode-alist))
+      (cons '("\\.py$" . python-mode) auto-mode-alist)) ;
 (setq interpreter-mode-alist
       (cons '("python" . python-mode)
             interpreter-mode-alist))
@@ -269,7 +272,7 @@
 ;; ���nil �򲻴� .zshrc �� ֻ�� .zshenv�������Լӿ��ٶȣ�������Ҫ�㽫����������صĶ��ŵ� .zshenv �У����� .zshrc �У�
 ;;(setq exec-path-from-shell-check-startup-files nil) ;
 ;;(setq exec-path-from-shell-arguments '("-l" )) ;remove -i read form .zshenv
-(exec-path-from-shell-initialize)
+;; (exec-path-from-shell-initialize)
 
 (global-set-key (kbd "M-o") 'ace-window)
 (setq aw-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n))
@@ -293,8 +296,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(debug-on-error t)
- '(default-input-method "rime")
+ '(default-input-method "rime" nil nil "Customized with use-package rime")
  '(display-time-mode t)
+ '(org-agenda-files '("/tmp/test.org"))
  '(org-journal-date-format "%F, %A")
  '(org-journal-dir "~/new-brain")
  '(org-journal-file-format "%Y-%m-%d.org")
@@ -303,15 +307,16 @@
 #+STARTUP: showeverything
 - tags :: [[file:%Y-%m.org][%Y-%m]]")
  '(package-selected-packages
-   '(python-mode yasnippet-snippets rime calfw-org calfw calfw-cal org-journal deft org-roam org-roam-bibtex org-roam-server dts-mode cmake-font-lock google-translate org-web-tools ggtags w3 xcscope dismal julia-mode prettier-js cal-china-x e2wm popwin treemacs pyim exwm-x exwm exec-path-from-shell ox-pandoc protobuf-mode ascii-art-to-unicode vue-mode org-plus-contrib org-brain sicp php-mode lua-mode markdown-mode haskell-mode helm-ag json-mode helm company ox-reveal sublime-themes avy htmlize tide plantuml-mode))
+   '(xcscope python-mode yasnippet yasnippet-classic-snippets deft rime ace-window wolfram-mode calfw-org calfw calfw-cal org-roam-server cmake-font-lock org-web-tools w3 prettier-js cal-china-x e2wm popwin ascii-art-to-unicode vue-mode sicp sublime-themes avy plantuml-mode))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
-;;  '(default ((t (:family "Noto Sans Mono" :foundry "DAMA" :slant normal :weight normal :height 110 :width normal)))))
+'(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+
+
 ;;  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
 
 ;;(require 'calfw)
@@ -328,6 +333,9 @@
   '("s-SPC" "C-v" "M-v" "C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
 ;; (unless org-roam-server-mode
 ;;   (org-roam-server-mode))
+
+
+;;(load "scilab-startup")
 
 
 ;; global key settings

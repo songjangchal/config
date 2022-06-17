@@ -100,12 +100,13 @@ source $ZSH/oh-my-zsh.sh
 
 #jlink
 #alias fhex="JLinkExe -Device stm32f207vg -If SWD -Speed 4000"
-#alias fhex4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f4_burn.jlink"
+alias fhex4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f4_burn.jlink"
 #alias fhex1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f1_burn.jlink"
 alias fhex1="JLinkExe -Device stm32f107rc -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/stm32f107_burn.jlink"
 #alias j4="JLinkExe -Device stm32f407zg -If SWD -Speed 4000"
 #alias j1="JLinkExe -Device stm32f103c8 -If SWD -Speed 4000"
 alias j1="JLinkExe -Device stm32f107rc -If SWD -Speed 4000"
+alias fspine="JLinkExe -Device stm32f446rc -If SWD -Speed 4000 -CommandFile /home/songzc/mnt_hitachi/songzc/codbase/spine.jlink"
 
 #jlinkrttlog
 #alias rttlog="JLinkRTTLogger -Device stm32f407zg -If SWD -Speed 4000 -RTTChannel 0 /tmp/rtt.log"
@@ -114,7 +115,7 @@ alias rttlog="JLinkRTTLogger -Device stm32f107rc -If SWD -Speed 4000 -RTTChannel
 hash -d src="$HOME/mnt_hitachi/songzc/codbase/"
 
 function setmouse-ks(){
-    trackball_id=`xinput list --id-only  "Kensington Kensington Slimblade Trackball"`
+    trackball_id=`xinput list --id-only  "Kensington Expert Wireless TB Mouse"`
     xinput set-button-map ${trackball_id} 3 2 1 4 5 6 7
     xinput --set-prop $trackball_id 'libinput Accel Speed' 1 # 设置 mouse 速度 (-1.0 ~1.0)
 }
@@ -126,15 +127,42 @@ function setkb-hhkb(){
     xkbcomp $HOME/.hhkb.xkb $DISPLAY -i ${hhkb_id}
 }
 
+function setkb-thinkpad(){
+    thinkpad_id=`xinput list --id-only  "AT Translated Set 2 keyboard"`
+
+    echo "thinkpad id: $thinkpad_id"
+    xkbcomp $HOME/.thinkpad.xkb $DISPLAY  -i ${thinkpad_id}
+}
+
+
 alias setd2="xrandr --output VGA-1 --auto --left-of LVDS-1"
 alias offd2="xrandr --output VGA-1 --off"
 
+#alias setd2prs="xrandr --output VGA-1  --same-as LVDS-1 --mode "
 
-export PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
+
+function startprs(){
+    xrandr --output LVDS-1 --mode $1
+    xrandr --output VGA-1  --same-as LVDS-1 --mode $1
+}
+
+
+function stopprs(){
+    xrandr --output LVDS-1 --auto
+    xrandr --output VGA-1  --left-of LVDS-1 --auto
+}
+
+PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
+
+PATH=/usr/local/Wolfram/WolframEngine/12.2/SystemFiles/Kernel/Binaries/Linux-x86-64/:$PATH
+
+PATH=/usr/local/Wolfram/WolframEngine/12.2/Executables/:$PATH
+PATH=/opt/scilab/bin/:$PATH
+
 
 export PATH=/usr/bin/vendor_perl:$PATH
 
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:$LD_LIBRARY_PATH
 
 
 function return-back-space(){
@@ -150,17 +178,18 @@ alias xmnd-recompile='env STACK_YAML=$HOME/open_source/xmonad-contrib/stack.yaml
 
 alias run-gitit='env STACK_YAML=$HOME/open_source/gitit/stack.yaml stack exec Gitit -- -f config'
 
-alias rm="rm-p"
+#alias rm="rm-p"
 
 
+#alias wolframscript='/usr/local/Wolfram/WolframEngine/12.2/SystemFiles/Kernel/Binaries/Linux-x86-64/wolframscript'
 
 ########################################## AIR 800 ###############################################
 
 air_kernel_src_version=linux-4.19.94-ti-r51
 air_kernel_version=4.19.94
 
-#air_ip=192.168.56.254
-air_ip=192.168.153.20
+air_ip=192.168.56.250
+#air_ip=192.168.153.20
 
 ##air_kernel_src_version=linux-5.4.66-ti-r18
 ##air_kernel_version=5.4.66
@@ -234,7 +263,9 @@ function aicp {
 
 function dtbcp {
     #scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/*.dtb root@${air_ip}:/boot/dtbs/${air_kernel_version}/.
-    scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/am5729-beagleboneai.dtb  root@${air_ip}:/boot/dtbs/${air_kernel_version}/.
+    #scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/am5729-beagleboneai.dtb  root@${air_ip}:/boot/dtbs/${air_kernel_version}/.
+    #scp $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/am5729-beagleboneai.dtb  ubuntu@${air_ip}:/home/ubuntu/.
+    sudo cp -f $HOME/codbase/tronlong/${air_kernel_src_version}/arch/arm/boot/dts/am5729-beagleboneai.dtb  /mnt/boot/dtbs/4.19.94
 }
 
 function kocp {
@@ -255,6 +286,16 @@ function tlcp {
     scp -r $HOME/codbase/tronlong/tools/devmem2  root@${air_ip}:~/.
     scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/tools/spi/spi_lcd  root@${air_ip}:~/.
     scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/tools/spi/spidev_test  root@${air_ip}:~/.
+}
+
+alias pandoc='~/.stack/snapshots/x86_64-linux-tinfo6/100e055fcbdc872df6d2e9216dc3bdffc599d4aee347f7aa31f87b638c06e50b/8.6.5/bin/pandoc'
+
+#alias llog ='date +"%Y%m%d%H%M%S" | xargs -I{} lcm-logger {}'
+
+function llog {
+    #    date +"%Y%m%d%H%M%S" | xargs -I{} lcm-logger {}
+    #    date +"%H%M%S-%Y%m%d" | xargs -I{} lcm-logger {}
+    date +"%H%M%S-%Y%m%d" | xargs -I{} lcm-logger  -c "(leg_control.*)|(state_.*)|(microstrain)|(wbc_lcm_data)|(main_cheetah_visualization)" {}
 }
 
 
