@@ -176,7 +176,9 @@
 ;;                         ("org" .  "http://elpa.emacs-china.org/org/") ))
 
 (setq package-archives '(("gnu"   . "https://elpa.gnu.org/packages/")
-                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;;                         ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+                         ("melpa" . "https://melpa.org/packages/")))
+
 (package-initialize)
 
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -298,6 +300,7 @@
  '(debug-on-error t)
  '(default-input-method "rime" nil nil "Customized with use-package rime")
  '(display-time-mode t)
+ '(ignored-local-variable-values '((org-table-export-default-format . orgtbl-to-csv)))
  '(org-agenda-files '("/tmp/test.org"))
  '(org-journal-date-format "%F, %A")
  '(org-journal-dir "~/new-brain")
@@ -307,17 +310,18 @@
 #+STARTUP: showeverything
 - tags :: [[file:%Y-%m.org][%Y-%m]]")
  '(package-selected-packages
-   '(xcscope python-mode yasnippet yasnippet-classic-snippets deft rime ace-window wolfram-mode calfw-org calfw calfw-cal org-roam-server cmake-font-lock org-web-tools w3 prettier-js cal-china-x e2wm popwin ascii-art-to-unicode vue-mode sicp sublime-themes avy plantuml-mode))
+   '(deadgrep org-roam-ui xcscope python-mode yasnippet yasnippet-classic-snippets deft rime ace-window wolfram-mode calfw-org calfw calfw-cal cmake-font-lock org-web-tools w3 prettier-js cal-china-x e2wm popwin ascii-art-to-unicode vue-mode sicp sublime-themes avy plantuml-mode))
+ '(warning-suppress-log-types '((comp)))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-'(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+ '(default ((t (:background nil)))))
 
 
-;;  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 120 :width normal)))))
+;;  
 
 ;;(require 'calfw)
 (require 'calfw-org)
