@@ -3,9 +3,9 @@
 (require 'ob-ditaa)
 (setq org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
 
-(setq org-babel-default-header-args:plantuml
-      (cons '(:java . "-Dplantuml.include.path=\"/home/songzc/software/C4/\"")
-            (assq-delete-all :java org-babel-default-header-args:plantuml)))
+;; (setq org-babel-default-header-args:plantuml
+;;       (cons '(:java . "-Dplantuml.include.path=\"/home/songzc/software/C4/\"")
+;;             (assq-delete-all :java org-babel-default-header-args:plantuml)))
 
 
 (setq plantuml-default-exec-mode 'jar)
@@ -199,37 +199,6 @@ PROJECT is the current project."
 ;;  (org-journal-date-format "%A, %d %B %Y"))
 
 
-
-
-(setq deft-directory "~/new-brain")
-(setq deft-extensions '("org" "txt" "tex"))
-(setq deft-new-file-format "%Y%m%d%H%M%S")
-
-;;(setq deft-use-filter-string-for-filename t)
-(setq deft-file-naming-rules '((noslash . "_")
-                               (nospace . "_")
-                               (case-fn . downcase)))
-
-
-;;--------------replace deft.el deft-new-file by manualy
-;;          (defun deft-new-file ()
-;;            "Create a new file quickly.
-;;          Use either an automatically generated filename or the filter string if non-nil
-;;          and `deft-use-filter-string-for-filename' is set.  If the filter string is
-;;          non-nil and title is not from filename, use it as the title."
-;;            (interactive)
-;;            (let* ((time-part (deft-unused-slug))
-;;                   (name-part (deft-whole-filter-regexp))
-;;                   (slug (concat time-part "-"  name-part)))
-;;          ;;    (if (and deft-filter-regexp deft-use-filter-string-for-filename)
-;;          ;;        ;; If the filter string is non-emtpy and titles are taken from
-;;          ;;        ;; filenames is set, construct filename from filter string.
-;;          ;;        (setq slug (deft-whole-filter-regexp))
-;;          ;;      ;; If the filter string is empty, or titles are taken from file
-;;          ;;      ;; contents, then use an automatically generated unique filename.
-;;          ;;      (setq slug (deft-unused-slug)))
-;;              (deft-new-file-named slug)))
-
 (setq org-latex-to-mathml-convert-command
       "java -jar %j -unicode -force -df %o %I"
       org-latex-to-mathml-jar-file
@@ -241,6 +210,6 @@ PROJECT is the current project."
 ;; (setq org-latex-to-mathml-convert-command
 ;;       "/usr/bin/latex2mathml -t \"%i\" > %o")
 
-
+(setq  org-roam-db-update-on-save nil)
 (provide 'init-org)
 

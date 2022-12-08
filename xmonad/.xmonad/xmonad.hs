@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 -- {-# LANGUAGE ExtendedDefaultRules #-}
 -- {-# OPTIONS_GHC -fno-warn-type-defaults #-}
+{-# OPTIONS_GHC -Wno-deprecations #-}
 -- ~/.xmonad/xmonad.hs
 -- Imports
 import XMonad
@@ -141,6 +142,7 @@ main = do
 
 --      spawn $ "trayer --edge top --align right --widthtype request --expand true --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x1A1918 --e xpand true --heighttype pixel --height 20 --padding 1"
     xmonad $ docks $ withUrgencyHookC dzenUrgencyHook { args = ["-bg", "red", "fg", "black", "-xs", "1", "-y", "25"] } urgencyConfig { remindWhen = Every 15 } $ def
+--     xmonad $ docks $ withUrgencyHookC dzenUrgencyHook { args = ["-bg", "red", "fg", "black", "-xs", "1", "-y", "25"] }  def 
       { terminal            = myTerminal
       , workspaces          = myWorkspaces
       , keys                = keys'
@@ -187,8 +189,8 @@ manageHook' = (composeAll . concat $
         myMusic   = ["Rhythmbox","Spotify", "Smplayer", "Vlc", "smplayer"]
         myChat    = ["Pidgin","Buddy List", "Psi", "Psi+", "chat", "psi", "Thunderbird"]
         myGimp    = ["Gimp", "Inkscape"]
-        myDev	  = ["urxvt", "Lxterminal"]
-        myEmacs	  = ["Emacs"]
+        myDev     = ["urxvt", "Lxterminal"]
+        myEmacs   = ["Emacs"]
         myEdiff   = ["Ediff"] 
 
         -- resources
@@ -309,7 +311,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask,      xK_l        ), spawn "systemctl suspend")
     -- Programs
     , ((0,                          xK_Print    ), spawn "scrot -e 'mv $f ~/screenshots/'")
-    , ((modMask,		            xK_o        ), spawn "chromium")
+    , ((modMask,                    xK_o        ), spawn "chromium")
     , ((modMask,                    xK_m        ), spawn "nautilus --no-desktop --browser")
     , ((modMask,                    xK_c        ), spawn "env LANG='zh_CN.utf8' LC_CTYPE='zh_CN.utf8' emacs &")
 

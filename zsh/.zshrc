@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf ripgrep)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -152,7 +152,8 @@ function stopprs(){
     xrandr --output VGA-1  --left-of LVDS-1 --auto
 }
 
-PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
+#PATH=$HOME/open_source/TaskJuggler/bin:$HOME/.local/bin:$HOME/.stack/programs/x86_64-linux/ghc-tinfo6-8.4.3/bin:$PATH:$HOME/luactb-1.0.2:$HOME/.gem/ruby/2.7.0/bin
+PATH=$HOME/open_source/TaskJuggler/bin:$PATH:$HOME/.gem/ruby/2.7.0/bin
 
 PATH=/usr/local/Wolfram/WolframEngine/12.2/SystemFiles/Kernel/Binaries/Linux-x86-64/:$PATH
 
@@ -288,7 +289,7 @@ function tlcp {
     scp -r $HOME/codbase/tronlong/${air_kernel_src_version}/tools/spi/spidev_test  root@${air_ip}:~/.
 }
 
-alias pandoc='~/.stack/snapshots/x86_64-linux-tinfo6/100e055fcbdc872df6d2e9216dc3bdffc599d4aee347f7aa31f87b638c06e50b/8.6.5/bin/pandoc'
+#alias pandoc='~/.stack/snapshots/x86_64-linux-tinfo6/100e055fcbdc872df6d2e9216dc3bdffc599d4aee347f7aa31f87b638c06e50b/8.6.5/bin/pandoc'
 
 #alias llog ='date +"%Y%m%d%H%M%S" | xargs -I{} lcm-logger {}'
 
@@ -299,6 +300,14 @@ function llog {
 }
 
 
+function tclog {
+    #    date +"%Y%m%d%H%M%S" | xargs -I{} lcm-logger {}
+    #    date +"%H%M%S-%Y%m%d" | xargs -I{} lcm-logger {}
+    date +"%H%M%S-%Y%m%d" | xargs -I{} lcm-logger  -c "(leg_control.*)|(state_.*)|(microstrain)|(wbc_lcm_data)|(main_cheetah_visualization)" --lcm-url="udpm://239.255.100.100:7667?ttl=255" {}
+}
+
+
+alias rm='echo "This is not the command you are looking for."; false'
 
 
 

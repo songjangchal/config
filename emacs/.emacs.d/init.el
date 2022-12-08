@@ -310,7 +310,7 @@
 #+STARTUP: showeverything
 - tags :: [[file:%Y-%m.org][%Y-%m]]")
  '(package-selected-packages
-   '(deadgrep org-roam-ui xcscope python-mode yasnippet yasnippet-classic-snippets deft rime ace-window wolfram-mode calfw-org calfw calfw-cal cmake-font-lock org-web-tools w3 prettier-js cal-china-x e2wm popwin ascii-art-to-unicode vue-mode sicp sublime-themes avy plantuml-mode))
+   '(zotxt org-journal org-noter org-noter-pdftools aggressive-completion ox-gfm deadgrep org-roam-ui xcscope python-mode yasnippet yasnippet-classic-snippets deft rime ace-window wolfram-mode calfw-org calfw calfw-cal cmake-font-lock org-web-tools w3 prettier-js cal-china-x e2wm popwin ascii-art-to-unicode vue-mode sicp sublime-themes avy plantuml-mode))
  '(warning-suppress-log-types '((comp)))
  '(yas-global-mode t))
 (custom-set-faces
@@ -352,9 +352,9 @@
 ;;
 (global-set-key (kbd "M-+") 'text-scale-increase)
 (global-set-key (kbd "M--") 'text-scale-decrease)
-(global-set-key (kbd "s-i") 'org-roam-insert)
-(global-set-key (kbd "s-f") 'org-roam-find-file)
-(global-set-key (kbd "s-d") 'deft)
+(global-set-key (kbd "s-i") 'org-roam-node-insert)
+(global-set-key (kbd "s-f") 'org-roam-node-find)
+(global-set-key (kbd "s-d") 'deadgrep)
 
 
 
